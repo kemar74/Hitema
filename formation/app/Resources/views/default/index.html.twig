@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block breadcrumb %}
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item active">Accueil</li>
+	</ol>
+{% endblock %}
+{% block body %}
+	<div class="jumbotron">
+		<h1 class="display-3">La formation</h1>
+		<p class="lead">Qu'est-ce qu'une formation?</p>
+		<hr class="my-4">
+		
+		<div class="card-deck" style="text-align:center">
+			<div class="card">
+				<img class="card-img-top" src="{{ asset('img/formation.jpg') }}" alt="Card image cap">
+				<div class="card-body">
+					<h4 class="card-title">Formations</h4>
+					<p class="card-text">Bla bla</p>
+					<a href="{{ path('listCategory') }}" class="btn btn-info" role="button">Voir nos formations</a>
+				</div>
+			</div>
+			<div class="card">
+				<img class="card-img-top" src="{{ asset('img/module.jpg') }}" alt="Card image cap">
+				<div class="card-body">
+					<h4 class="card-title">Modules</h4>
+					<p class="card-text">Bla bla...</p>
+					<a href="{{ path('listModule') }}" class="btn btn-info" role="button">Voir nos modules</a>
+				</div>
+			</div>
+			<div class="card">
+				<img class="card-img-top" src="{{ asset('img/module.jpg') }}" alt="Card image cap">
+				<div class="card-body">
+					<h4 class="card-title">Pour et par tous</h4>
+					<p class="card-text">Bla bla...</p>
+					<a href="{{ path('formModuleOrFormation') }}" class="btn btn-info" role="button">Je participe!</a>
+				</div>
+			</div>
+		</div>
+
+		<p class="lead">
+		</p>
+	</div>
+
+{% endblock %}

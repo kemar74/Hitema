@@ -1,0 +1,52 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Formulaire de formation{% endblock %}
+
+{% block body %}
+<div class="container">
+			<div class="row">
+				<div class="col">
+					<ul class="nav nav-pills">
+						<li class="nav-item"><a href="{{ path('homepage')}}" class="nav-link"><i class="fa fa-home"></i></a></li>
+						<li class="nav-item"><a href="#" class="nav-link">Nouveau livre</a></li>
+					</ul>
+				</div>
+			</div>
+	<h1>Ajouter un livre</h1>
+	{{ form_start(form) }}
+		<div class="">
+			<div class="form-group">
+				{{ form_row(form.title) }}
+			</div>
+			<br/>
+			<div class="form-group">
+				{{ form_row(form.author) }}
+			</div>
+			<br/>
+			<div class="form-group">
+				{{ form_row(form.description) }}
+			</div>
+			<br/>
+			<div class="form-group">
+				{{ form_row(form.datePublication) }}
+			</div>
+			<br/>
+			<div class="form-group">
+				{{ form_row(form.urlImage) }}
+			</div>
+			<br/>
+			<div class="form-group">
+				{{ form_row(form.categories) }}
+			</div>
+			<br/>
+			<div class="form-group">
+				{{ form_row(form.slug) }}
+			</div>
+		</div>
+		<div class="form-group row">
+				<a href="{{ path('listBook') }}" class="btn btn-danger">Annuler</a>
+				{{ form_row(form.save) }}
+		</div>
+	{{ form_end(form) }}
+</div>
+{% endblock %}

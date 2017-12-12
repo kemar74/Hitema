@@ -1,0 +1,39 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<ul class="nav nav-pills">
+						<li class="nav-item"><a href="{{ path('homepage')}}" class="nav-link"><i class="fa fa-home"></i></a></li>
+						<li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-bookmark-o"></i>{{ category.name }}</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<h1>{{ category.name }} <a href="{{ path('formBook') }}" class="btn btn-success btn-circle">+</a></h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="row">
+						{% for book in category.books %}
+						<div class="col-sm-4">
+							<div class="thumbnail">
+								<img src="{{ (book.urlImage is null or book.urlImage is empty ? 'http://dummyimage.com/400x400/000/fff.jpg&text=book1' : book.urlImage) }}" alt="cover" class="img-fluid" />
+								<div class="caption">
+									<h3>{{ book.title }}</h3>
+									<p>{{ book.author}}</p>
+									<p><a href="{{ path('viewBook', {slug : book.slug} )}}" class="btn btn-primary">Details</a></p>
+								</div>
+							</div>
+						</div>
+						{% else %}
+							<p> Aucun livre enregistré</p>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+{% endblock %}

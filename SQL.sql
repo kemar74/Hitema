@@ -61,4 +61,4 @@ INSERT INTO `category` (`id`, `name`, `slug`) VALUES
 (4,	'Thriller',	'Thriller'),
 (5,	'Thatre',	'Thatre');
 
--- 2017-12-12 15:41:42
+-- 2017-12-12 15:50:48

@@ -1,0 +1,54 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Toutes les formations{% endblock %}
+
+{% block body %}
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<ul class="nav nav-pills">
+						<li class="nav-item"><a href="{{ path('homepage')}}" class="nav-link"><i class="fa fa-home"></i></a></li>
+						<li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-bookmark-o"></i></a></li>
+					</ul>
+				</div>
+			</div>
+				
+		<form class="col-lg-6" method="GET" action="{{ path('searchBook') }}">
+			<div class="input-group">
+			<input type="text" name="recherche" class="form-control" placeholder="Rechercher..." aria-label="Rechercher...">
+			<span class="input-group-btn">
+				<input class="btn btn-secondary" type="submit">Go!</button>
+			</span>
+			</div>
+		</form>
+		{% if books is not defined or books is empty %}
+			<p>Oh non... Aucun livre trouvé!</p>
+		{% else %}
+		<table class="table table-stripped">
+			<tr>
+				<th>Titre</th>
+				<th>Autheur</th>
+				<th>Date de publication</th>
+				<th>Catégorie</th>
+				<th><th>
+				<th></th>
+			<tr>
+			{% for book in books %}
+			<tr>
+				<td>{{ book.title }}</td>
+				<td>{{ book.author }}</td>
+				<td>{{ book.datePublication | date('d/m/Y') }}</td>
+				<td>{% for category in book.categories %}{{ category.name ~ (not loop.last ? ', ' : '') }}{% endfor %}</td>
+				<td><a href="{{ path('viewBook', {slug : book.id} ) }}" class="btn btn-info btn-circle">Voir</a></td>
+				<td><a href="{{ path('updateBook', {slug : book.slug} ) }}" class="btn btn-success btn-circle">Modifier</a></td>
+			</tr>
+			{% endfor %}
+		{% endif %}
+		<p class="lead">
+			<a class="btn btn-primary btn-lg" href="{{ path('formBook') }}" role="button">Ajouter un livre</a>
+		</p>
+	</div>
+</div>
+
+
+{% endblock %}

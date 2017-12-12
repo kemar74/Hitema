@@ -1,0 +1,37 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}{{ (book.title is defined ? book.title : 'Oh noooon!' ) }}{% endblock %}
+
+{% block body %}
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<ul class="nav nav-pills">
+						<li class="nav-item"><a href="{{ path('homepage')}}" class="nav-link"><i class="fa fa-home"></i></a></li>
+						<li class="nav-item"><a href="#" class="nav-link"><i class="fa fa-book"></i></a></li>
+					</ul>
+				</div>
+			</div>
+			{% if book.title is defined %}
+			<div class="row">
+				<div class="col">
+					<h1>{{ book.title }} <a href="{{ path('updateBook', {slug : book.slug } ) }}" class="btn btn-circle btn-default"><i class="fa fa-pencil"></i></a></h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="card">
+					<img src="{{ book.urlImage }}" alt="cover" class="img-fluid card-img-left" />
+					 <div class="card-body">
+						<p><strong class="text-uppercase">Author :</strong> {{ book.author }}</p>
+						<p><strong class="text-uppercase">Description :</strong> {{ book.description }}</p>
+						<p><strong class="text-uppercase">Category :</strong> {% for category in book.categories %}{{ (not loop.first ? ', ' : '') ~ category.name }}{% endfor %}</p>
+						<p><strong class="text-uppercase">Publication date :</strong> {{ months[book.datePublication | date('m') *1 ] }} {{ book.datePublication | date('d') }}, {{ book.datePublication | date('Y') }}</p>
+					</div>
+				</div>
+			</div>
+			{% else %}
+				<p> Lien mort, aucun livre trouvé avec cette URL </p>
+			{% endif %}
+		</div>
+
+{% endblock %}
