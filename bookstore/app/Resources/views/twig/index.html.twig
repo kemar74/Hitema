@@ -1,0 +1,40 @@
+{#
+    lien : utilise le name des routes - @Route("/URL", name="NOM UNIQUE")
+        url : lien absolu
+        path : lien relatif
+            1er paramètre : nom de la route
+            2ème paramètre : valeur des variables d'URL
+    ressources externes : image, vidéo, css, js...
+        asset : cible le dossier public "web"
+#}
+
+<img src="{{ asset('img/logo.png') }}" alt="">
+
+<p><a href="{{ url('homepage') }}">Accueil</a></p>
+<p><a href="{{ url('hello', { 'name' : 'Hitema' }) }}">Hello Hitema</a></p>
+
+
+
+<p>Nous sommes le {{ now  | date('d/m/Y') }}</p>
+
+{% set length = list | length %}
+
+<p>Il y a {{ length }} éléments</p>
+
+{% for value in list %}
+    {{ value | upper | reverse }}
+{% endfor %}
+
+{#
+    set : création d'une variable
+#}
+
+{% set meteo = 'neige' %}
+
+{% if meteo == 'soleil' %}
+    <p>Soleil</p>
+{% elseif meteo == 'neige' %}
+    <p>Neige</p>
+{% else %}
+    <p>Nuageux</p>
+{% endif %}

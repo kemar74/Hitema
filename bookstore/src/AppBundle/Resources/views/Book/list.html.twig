@@ -1,0 +1,52 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Toutes les formations{% endblock %}
+
+{% block body %}
+<div class="jumbotron jumbotron-fluid">
+	<div class="container">
+		<h1 class="display-3">Toutes les formations</h1>
+		<p class="lead">Voici la liste de toutes les formations</p>
+		<hr class="my-2">
+
+		{% if formations is not defined or formations is empty %}
+			<p>Oh non... Aucune formation n'est proposée aujourd'hui</p>
+		{% else %}
+		<div id="carousel-formations" class="carousel slide" data-ride="carousel" style="background-color:black;height:400px;overflow:hidden;">
+			<ol class="carousel-indicators">
+			{% for formation in formations %}
+				<li data-target="#carousel-formations" data-slide-to="{{ loop.index0 }}" {{ (loop.first ? 'class="active"' : '') }}></li>
+			{% endfor %}
+			</ol>
+			<div class="carousel-inner" role="listbox">
+			{% for formation in formations %}
+				<div class="carousel-item {{ (loop.first ? 'active' : '')}}">
+					<img src="{{ formation.urlImage }}" alt="{{ formation.name }}" class="d-block "style="margin:auto; height:400px; width:auto;">
+					<div class="carousel-caption d-none d-md-block">
+						<h3>{{ formation.name }}</h3>
+						<p>{{ formation.baseline }}</p>
+						<a class="btn btn-info" href="{{ path('viewFormation', {slug : formation.slug} ) }}">Voir la formation</a>
+					</div>
+				</div>
+			{% endfor %}
+			</div>
+			<a class="carousel-control-prev" href="#carousel-formations" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="carousel-control-next" href="#carousel-formations" role="button" data-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+		{% endif %}
+		<hr class="my-5"/>
+		<p class="lead">
+			<a class="btn btn-primary btn-lg" href="{{ path('formFormation') }}" role="button">Proposer ma formation</a>
+		</p>
+	</div>
+</div>
+<h1></h1>
+
+
+{% endblock %}

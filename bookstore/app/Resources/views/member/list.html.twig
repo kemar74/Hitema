@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>liste des membres</h1>
+    {% for key, value in list %}
+        <p>
+            <a href="{{ url('member', { 'id' : key } ) }}">{{ value.name ~ ' ' ~ value['fname'] }}</a>
+        </p>
+    {% endfor %}
+{% endblock %}
+
+
+
+
+

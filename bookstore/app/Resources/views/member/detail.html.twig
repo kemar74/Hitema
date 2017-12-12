@@ -1,0 +1,6 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{ detail.name ~ ' ' ~ detail.fname }}</h1>
+    <img src="{{ asset('img/' ~ detail.img) }}" alt="">
+{% endblock %}

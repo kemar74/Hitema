@@ -1,0 +1,4 @@
+- finaliser le champ hobbies dans contact/form.html.twig
+	afficher des cases à cocher
+- ajouter une relation 1:n entre contact et une autre entité
+- exercice formation/module

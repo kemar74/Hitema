@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block breadcrumb %}
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item active">Accueil</li>
+	</ol>
+{% endblock %}
+{% block body %}
+	<div class="container">
+			<div class="row">
+				<div class="col">
+					<ul class="nav nav-pills">
+						<li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-home"></i></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="jumbotron">
+						<h1>Welcome !</h1>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="page-header">
+						<h1>Categories</h1>
+						<a href="{{ path('formCategory') }}" class="btn btn-success border-circle">+</a>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<p>
+					{% for category in categories %}
+						<a href="{{ path('viewCategory', {slug : category.slug} ) }}" class="btn btn-primary">{{ category.name }} <span class="badge badge-light">{{ category.bookCount }}</span></a>
+					{% endfor %}
+					</p>
+				</div>
+			</div>
+		</div>
+
+{% endblock %}
